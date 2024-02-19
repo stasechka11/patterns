@@ -1,6 +1,7 @@
 package ru.netology.delivery.data;
 
 import com.github.javafaker.Faker;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 
@@ -11,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Random;
 
+@Data
 @NoArgsConstructor
 public class DataGenerator {
 

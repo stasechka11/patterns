@@ -16,7 +16,6 @@ public class DeliveryTest {
     @BeforeEach
     void setup() {
         open("http://localhost:9999");
-        var dataGenerator = new DataGenerator();
     }
 
     @Test
