@@ -6,6 +6,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 import ru.netology.delivery.data.DataGenerator;
+import ru.netology.delivery.pages.CardDeliveryPage;
 
 
 import java.time.Duration;
@@ -16,6 +17,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static ru.netology.delivery.data.DataGenerator.*;
 
 public class DeliveryTest {
+    CardDeliveryPage cardDeliveryPage;
+
     @BeforeAll
     static void setUpAll() {
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -28,7 +31,7 @@ public class DeliveryTest {
 
     @BeforeEach
     void setup() {
-        open("http://localhost:9999");
+        cardDeliveryPage = open("http://localhost:9999", CardDeliveryPage.class);
     }
 
     @Test
@@ -40,7 +43,8 @@ public class DeliveryTest {
         var daysToAddForSecondMeeting = 5;
         var secondMeetingDate = generateDate(daysToAddForSecondMeeting);
 
-        $("[data-test-id='city'] input").setValue(validUser.getCity());
+        cardDeliveryPage.fillInCityField(validUser.getCity());
+       // $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
         $("[data-test-id='date'] input").setValue(firstMeetingDate);
         $("[data-test-id='name'] input").setValue(validUser.getName());
