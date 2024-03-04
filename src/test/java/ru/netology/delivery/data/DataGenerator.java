@@ -16,8 +16,7 @@ public class DataGenerator {
 
     @Step("Генерация даты доставки")
     public static String generateDate(int shift) {
-        var deliveryDate = LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        return deliveryDate;
+        return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
     @Step("Генерация города доставки")
@@ -27,22 +26,19 @@ public class DataGenerator {
                 "Краснодар", "Красноярск", "Пермь", "Ставрополь", "Хабаровск", "Благовещенск", "Архангельск", "Астрахань", "Белгород", "Брянск", "Владимир",
                 "Волгоград", "Вологда", "Воронеж", "Иваново", "Иркутск", "Калининград", "Калуга", "Кемерово", "Киров", "Кострома", "Курск", "Санкт-Петербург",
                 "Липецк", "Магадан", "Москва", "Мурманск", "Нижний Новгород", "Великий Новгород", "Новосибирск", "Омск", "Пенза", "Рязань", "Саратов", "Ярославль"};
-        var city = cities[new Random().nextInt(cities.length)];
-        return city;
+        return cities[new Random().nextInt(cities.length)];
     }
 
     @Step("Генерация фамилии и имени")
     public static String generateName(String locale) {
         Faker faker = new Faker(new Locale(locale));
-        var fullName = faker.name().lastName() + " " + faker.name().firstName();
-        return fullName;
+        return faker.name().lastName() + " " + faker.name().firstName();
     }
 
     @Step("Генерация номера телефона")
     public static String generatePhone(String locale) {
         Faker faker = new Faker(new Locale(locale));
-        var phoneNumber = faker.phoneNumber().phoneNumber();
-        return phoneNumber;
+        return faker.phoneNumber().phoneNumber();
     }
 
     public static class Registration {
